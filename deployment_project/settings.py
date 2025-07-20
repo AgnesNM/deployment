@@ -170,6 +170,7 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='')
 
 # Add this to the end of your settings.py
 import dj_database_url
+import os
 
 # Use Render's DATABASE_URL if available
 if 'DATABASE_URL' in os.environ:
