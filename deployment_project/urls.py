@@ -16,9 +16,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
 
+def home(request):
+    return HttpResponse("""
+    <h1>Django Deployment Project API</h1>
+    <p>Your Django app is running successfully!</p>
+    <ul>
+        <li><a href="/swagger/">Swagger API Documentation</a></li>
+        <li><a href="/api/health/">Health Check</a></li>
+        <li><a href="/admin/">Django Admin</a></li>
+        <li><a href="/api/">API Endpoints</a></li>
+    </ul>
+    """)
+
 urlpatterns = [
+    path('', home, name='home'),  # Add this line for the root URL
     path('admin/', admin.site.urls),
     path('api/', include('tasks_api.urls')),
     
